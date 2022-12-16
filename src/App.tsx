@@ -9,7 +9,6 @@ import { UseAxios } from "./hooks/useAxios";
 function App() {
   const [word, setWord] = useState("");
   const [selection, setSelection] = useState("");
-  const [noData, setNoData] = useState(false);
 
   const { response, error, loading, operation } = UseAxios();
 
@@ -37,12 +36,23 @@ function App() {
             </div>
             {response.meanings.map((resp, index) =>
               selection === "synonyms" ? (
-                resp.synonyms.length > 0 && (
+                resp.synonyms.length > 0 ? (
                   <Synonyms
                     key={index}
                     syn={resp.synonyms}
                     speech={resp.partOfSpeech}
                   />
+                ) : (
+                  index === 0 && (
+                    <div className="no-syn">
+                      <h3>
+                        <strong>
+                          {word.charAt(0).toUpperCase() + word.slice(1)}
+                        </strong>{" "}
+                        has no <strong>Synonyms</strong>
+                      </h3>
+                    </div>
+                  )
                 )
               ) : (
                 <Definition
@@ -51,8 +61,7 @@ function App() {
                   def={resp.definitions}
                 />
               )
-            )};
-            
+            )}
           </div>
         )}
       </div>
