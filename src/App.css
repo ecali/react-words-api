@@ -127,8 +127,6 @@ hr.hspacer {
   }
 }
 
-
-
 .card {
   width: 100%;
   border: solid 1px black;
@@ -194,7 +192,31 @@ h3 {
   margin: 0 !important;
 }
 
-.min-title{
+h2 {
+  font-weight: 200;
+  font-size: 28px;
+  margin: 0 !important;
+}
+.error-cnt {
+  text-align: center;
+  margin: 50px 25px;
+  box-shadow: 0 0 2px 1px #d0d0d0;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  background: -webkit-linear-gradient(
+    to right,
+    #ff4b2b,
+    #ff416c
+  ); 
+  background: linear-gradient(
+    to right,
+    #ff4b2b,
+    #ff416c
+  );
+}
+
+.min-title {
   display: flex;
   justify-content: center;
   margin: 2rem;
@@ -220,5 +242,8 @@ h3 {
   }
   .synonyms {
     margin-bottom: 1rem;
+  }
+  .error-cnt{
+    margin: 50px 0;
   }
 }

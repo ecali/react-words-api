@@ -28,7 +28,13 @@ function App() {
           action={handleMeaning}
         />
         {loading && <div className="lds-dual-ring"></div>}
-        {error && <h2>Ops, there are an error</h2>}
+        {error && (
+          <div className="error-cnt">
+            <h2>{error}</h2>
+            <hr className="hspacer" />
+            <h2>Can you try another word please </h2>
+          </div>
+        )}
         {response && (
           <div className={selection === "synonyms" ? "syn-cnt" : "data-cnt"}>
             <div className="min-title">

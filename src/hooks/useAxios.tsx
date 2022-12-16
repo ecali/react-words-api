@@ -26,10 +26,11 @@ export const UseAxios = () => {
           };
         try {
             setLoading(true)
+            setError(undefined);
             const result = await axios.request(options);
             setResponse(result.data[0]);
         } catch (error: any) {
-            setError(error);
+            setError(error.message);
         } finally {
             setLoading(false);
         }
