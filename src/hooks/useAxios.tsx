@@ -27,6 +27,7 @@ export const UseAxios = () => {
         try {
             setLoading(true)
             setError(undefined);
+            setResponse(undefined);
             const result = await axios.request(options);
             setResponse(result.data[0]);
         } catch (error: any) {

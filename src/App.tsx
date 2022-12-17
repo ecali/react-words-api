@@ -36,39 +36,41 @@ function App() {
           </div>
         )}
         {response && (
-          <div className={selection === "synonyms" ? "syn-cnt" : "data-cnt"}>
+          <>
             <div className="min-title">
               <h3>{selection === "synonyms" ? "Synonyms" : "Definitions"}</h3>
             </div>
-            {response.meanings.map((resp, index) =>
-              selection === "synonyms" ? (
-                resp.synonyms.length > 0 ? (
-                  <Synonyms
-                    key={index}
-                    syn={resp.synonyms}
-                    speech={resp.partOfSpeech}
-                  />
-                ) : (
-                  index === 0 && (
-                    <div className="no-syn">
-                      <h3>
-                        <strong>
-                          {word.charAt(0).toUpperCase() + word.slice(1)}
-                        </strong>{" "}
-                        has no <strong>Synonyms</strong>
-                      </h3>
-                    </div>
+            <div className={selection === "synonyms" ? "syn-cnt" : "data-cnt"}>
+              {response.meanings.map((resp, index) =>
+                selection === "synonyms" ? (
+                  resp.synonyms.length > 0 ? (
+                    <Synonyms
+                      key={index}
+                      syn={resp.synonyms}
+                      speech={resp.partOfSpeech}
+                    />
+                  ) : (
+                    index === 0 && (
+                      <div className="no-syn">
+                        <h3>
+                          <strong>
+                            {word.charAt(0).toUpperCase() + word.slice(1)}
+                          </strong>{" "}
+                          has no <strong>Synonyms</strong>
+                        </h3>
+                      </div>
+                    )
                   )
+                ) : (
+                  <Definition
+                    key={index}
+                    speech={resp.partOfSpeech}
+                    def={resp.definitions}
+                  />
                 )
-              ) : (
-                <Definition
-                  key={index}
-                  speech={resp.partOfSpeech}
-                  def={resp.definitions}
-                />
-              )
-            )}
-          </div>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
