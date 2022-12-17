@@ -15,6 +15,11 @@ function App() {
   const handleMeaning = () => {
     operation(word);
   };
+  const handleNewOperation = (value: string) => {
+    operation(value);
+    setWord(value);
+    setSelection('');
+  } 
 
   return (
     <div className="App">
@@ -32,7 +37,7 @@ function App() {
           <div className="error-cnt">
             <h2>{error}</h2>
             <hr className="hspacer" />
-            <h2>Can you try another word please </h2>
+            <h2>Can you try another word please</h2>
           </div>
         )}
         {response && (
@@ -48,13 +53,14 @@ function App() {
                       key={index}
                       syn={resp.synonyms}
                       speech={resp.partOfSpeech}
+                      callback={handleNewOperation}
                     />
                   ) : (
                     index === 0 && (
                       <div className="no-syn">
                         <h3>
                           <strong>
-                            {word.charAt(0).toUpperCase() + word.slice(1)}
+                            {response.word.charAt(0).toUpperCase() + response.word.slice(1)}
                           </strong>{" "}
                           has no <strong>Synonyms</strong>
                         </h3>

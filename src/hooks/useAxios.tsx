@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react";
 
 export interface DictionaryResponse {
+    word: string,
     meanings: [{
         definitions: DefinitionResponse[]
         partOfSpeech: string,
